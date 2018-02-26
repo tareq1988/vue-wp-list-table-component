@@ -17,10 +17,11 @@
   "module": "index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --watch",
+    "dev:build": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --hide-modules",
     "build": "npm run build:browser && npm run build:common",
     "build:browser": "cross-env NODE_ENV=production webpack --config config/webpack.config.browser.js --progress --hide-modules",
     "build:common": "cross-env NODE_ENV=production webpack --config config/webpack.config.common.js --progress --hide-modules",
-    "prepublish": "npm run build"
+    "prepublish": "npm run dev:build"
   },
   "repository": {
     "type": "git",
