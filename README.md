@@ -129,7 +129,7 @@ The table component fires the following events:
 ```html
 <!-- template -->
 <list-table
-	@action:click="onActionClick"
+    @action:click="onActionClick"
 </list-table>
 
 
@@ -150,7 +150,7 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-	@bulk:click="onBulkAction"
+    @bulk:click="onBulkAction"
 </list-table>
 
 <!-- method -->
@@ -162,20 +162,20 @@ methods: {
 }
 ```
 
-**pagination**: When a pagination link is clicked, this event is fired. 
+**pagination**: When a pagination link is clicked, this event is fired.
 
 ```html
 <!-- template -->
 <list-table
-	@pagination="goToPage"
+    @pagination="goToPage"
 </list-table>
 
 <!-- method -->
 methods: {
     goToPage(page) {
-		console.log('Going to page: ' + page);
-		this.currentPage = page;
-		this.loadItems(page);
+        console.log('Going to page: ' + page);
+        this.currentPage = page;
+        this.loadItems(page);
     }
 }
 ```
@@ -185,7 +185,7 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-	@sort="sortCallback"
+    @sort="sortCallback"
 </list-table>
 
 <!-- method -->
@@ -204,42 +204,42 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-	:loading="loading"
-	:rows="items"
-	@pagination="goToPage"
+    :loading="loading"
+    :rows="items"
+    @pagination="goToPage"
 </list-table>
 
 <!-- method -->
 data: {
-	return {
-		loading: false,
-		items: []
-	}
+    return {
+        loading: false,
+        items: []
+    }
 },
 
 created() {
-	this.loadItems();
+    this.loadItems();
 },
 
 methods: {
 
-	loadItems() {
-		let self = this;
-		
-		self.loading = true;
-		
-		api.get('/items')
-		.then(response, function(data) {
-			self.loading = false;
-			self.items = data;
-		});
-	},
-	
+    loadItems() {
+        let self = this;
+
+        self.loading = true;
+
+        api.get('/items')
+        .then(response, function(data) {
+            self.loading = false;
+            self.items = data;
+        });
+    },
+
 
     goToPage(page) {
-		console.log('Going to page: ' + page);
-		this.currentPage = page;
-		this.loadItems(page);
+        console.log('Going to page: ' + page);
+        this.currentPage = page;
+        this.loadItems(page);
     }
 
 }
