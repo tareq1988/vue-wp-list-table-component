@@ -23,78 +23,78 @@ Add the component:
 ```html
 
 <list-table
-    :columns="{
-        'title': {
-            label: 'Title',
-            sortable: true
-        },
-        'author': {
-            label: 'Author'
-        }
-    }"
-    :loading="false"
-    :rows="[
-        {
-            id: 1,
-            title: 'Wings of Fire: An Autobiography',
-            author: ['A.P.J. Abdul Kalam'],
-            image: 'https://images.gr-assets.com/books/1295670969l/634583.jpg'
-        },
-        {
-            id: 2,
-            title: 'Who Moved My Cheese?',
-            author: ['Spencer Johnson', 'Kenneth H. Blanchard'],
-            image: 'https://images.gr-assets.com/books/1388639717l/4894.jpg'
-        },
-        {
-            id: 3,
-            title: 'Option B',
-            author: ['Sheryl Sandberg', 'Adam Grant', 'Adam M. Grant'],
-            image: 'https://images.gr-assets.com/books/1493998427l/32938155.jpg'
-        }
-    ]"
-    :actions="[
-        {
-            key: 'edit',
-            label: 'Edit'
-        },
-        {
-            key: 'trash',
-            label: 'Delete'
-        }
-    ]"
-    :show-cb="true"
-    :total-items="15"
-    :bulk-actions="[
-        {
-            key: 'trash',
-            label: 'Move to Trash'
-        }
-    ]"
-    :total-pages="5"
-    :per-page="3"
-    :current-page="1"
-    action-column="title"
-    @pagination="goToPage"
-    @action:click="onActionClick"
-    @bulk:click="onBulkAction"
+  :columns="{
+    'title': {
+      label: 'Title',
+      sortable: true
+    },
+    'author': {
+      label: 'Author'
+    }
+  }"
+  :loading="false"
+  :rows="[
+    {
+      id: 1,
+      title: 'Wings of Fire: An Autobiography',
+      author: ['A.P.J. Abdul Kalam'],
+      image: 'https://images.gr-assets.com/books/1295670969l/634583.jpg'
+    },
+    {
+      id: 2,
+      title: 'Who Moved My Cheese?',
+      author: ['Spencer Johnson', 'Kenneth H. Blanchard'],
+      image: 'https://images.gr-assets.com/books/1388639717l/4894.jpg'
+    },
+    {
+      id: 3,
+      title: 'Option B',
+      author: ['Sheryl Sandberg', 'Adam Grant', 'Adam M. Grant'],
+      image: 'https://images.gr-assets.com/books/1493998427l/32938155.jpg'
+    }
+  ]"
+  :actions="[
+    {
+      key: 'edit',
+      label: 'Edit'
+    },
+    {
+      key: 'trash',
+      label: 'Delete'
+    }
+  ]"
+  :show-cb="true"
+  :total-items="15"
+  :bulk-actions="[
+    {
+      key: 'trash',
+      label: 'Move to Trash'
+    }
+  ]"
+  :total-pages="5"
+  :per-page="3"
+  :current-page="1"
+  action-column="title"
+  @pagination="goToPage"
+  @action:click="onActionClick"
+  @bulk:click="onBulkAction"
 >
-    <template slot="title" slot-scope="data">
-        <img :src="data.row.image" :alt="data.row.title" width="50">
-        <strong><a href="#">{{ data.row.title }}</a></strong>
-    </template>
+  <template slot="title" slot-scope="data">
+    <img :src="data.row.image" :alt="data.row.title" width="50">
+    <strong><a href="#">{{ data.row.title }}</a></strong>
+  </template>
 
-    <template slot="filters">
-        <select>
-            <option value="All Dates">All Dates</option>
-        </select>
+  <template slot="filters">
+    <select>
+      <option value="All Dates">All Dates</option>
+    </select>
 
-        <button class="button">Filter</button>
-    </template>
+    <button class="button">Filter</button>
+  </template>
 
-    <template slot="author" slot-scope="data">
-        {{ data.row.author.join(', ') }}
-    </template>
+  <template slot="author" slot-scope="data">
+    {{ data.row.author.join(', ') }}
+  </template>
 </list-table>
 ```
 
@@ -129,19 +129,19 @@ The table component fires the following events:
 ```html
 <!-- template -->
 <list-table
-    @action:click="onActionClick"
+  @action:click="onActionClick"
 </list-table>
 
 
 <!-- method -->
 methods: {
-    onActionClick(action, row) {
-        if ( 'trash' === action ) {
-            if ( confirm('Are you sure to delete?') ) {
-                alert('deleted: ' + row.title);
-            }
-        }
+  onActionClick(action, row) {
+    if ( 'trash' === action ) {
+      if ( confirm('Are you sure to delete?') ) {
+        alert('deleted: ' + row.title);
+      }
     }
+  }
 }
 ```
 
@@ -150,15 +150,15 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-    @bulk:click="onBulkAction"
+  @bulk:click="onBulkAction"
 </list-table>
 
 <!-- method -->
 methods: {
-    onBulkAction(action, items) {
-        console.log(action, items);
-        alert(action + ': ' + items.join(', ') );
-    }
+  onBulkAction(action, items) {
+    console.log(action, items);
+    alert(action + ': ' + items.join(', ') );
+  }
 }
 ```
 
@@ -167,16 +167,16 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-    @pagination="goToPage"
+  @pagination="goToPage"
 </list-table>
 
 <!-- method -->
 methods: {
-    goToPage(page) {
-        console.log('Going to page: ' + page);
-        this.currentPage = page;
-        this.loadItems(page);
-    }
+  goToPage(page) {
+    console.log('Going to page: ' + page);
+    this.currentPage = page;
+    this.loadItems(page);
+  }
 }
 ```
 
@@ -185,17 +185,17 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-    @sort="sortCallback"
+  @sort="sortCallback"
 </list-table>
 
 <!-- method -->
 methods: {
-    sortCallback(column, order) {
-        this.sortBy = column;
-        this.sortOrder = order;
+  sortCallback(column, order) {
+    this.sortBy = column;
+    this.sortOrder = order;
 
-        // this.loadItems(comun, order);
-    }
+    // this.loadItems(comun, order);
+  }
 }
 ```
 
@@ -204,43 +204,43 @@ methods: {
 ```html
 <!-- template -->
 <list-table
-    :loading="loading"
-    :rows="items"
-    @pagination="goToPage"
+  :loading="loading"
+  :rows="items"
+  @pagination="goToPage"
 </list-table>
 
 <!-- method -->
 data: {
-    return {
-        loading: false,
-        items: []
-    }
+  return {
+    loading: false,
+    items: []
+  }
 },
 
 created() {
-    this.loadItems();
+  this.loadItems();
 },
 
 methods: {
 
-    loadItems() {
-        let self = this;
+  loadItems() {
+    let self = this;
 
-        self.loading = true;
+    self.loading = true;
 
-        api.get('/items')
-        .then(response, function(data) {
-            self.loading = false;
-            self.items = data;
-        });
-    },
+    api.get('/items')
+    .then(response, function(data) {
+      self.loading = false;
+      self.items = data;
+    });
+  },
 
 
-    goToPage(page) {
-        console.log('Going to page: ' + page);
-        this.currentPage = page;
-        this.loadItems(page);
-    }
+  goToPage(page) {
+    console.log('Going to page: ' + page);
+    this.currentPage = page;
+    this.loadItems(page);
+  }
 
 }
 ```
