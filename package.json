@@ -25,12 +25,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tareq1988/vue-wp-list-table.git"
+    "url": "git+https://github.com/tareq1988/vue-wp-list-table-component.git"
   },
   "bugs": {
-    "url": "https://github.com/tareq1988/vue-wp-list-table/issues"
+    "url": "https://github.com/tareq1988/vue-wp-list-table-component/issues"
   },
-  "homepage": "https://github.com/tareq1988/vue-wp-list-table#readme",
+  "homepage": "https://github.com/tareq1988/vue-wp-list-table-component#readme",
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-eslint": "^7.1.1",
