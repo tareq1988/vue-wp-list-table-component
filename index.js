@@ -1,1 +1,0 @@
-export default from './dist/vue-wp-list-table.common'

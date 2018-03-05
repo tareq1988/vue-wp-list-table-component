@@ -1,7 +1,7 @@
 {
   "name": "vue-wp-list-table",
   "description": "WordPress List Table component for Vue.js",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "author": {
     "name": "Tareq Hasan",
     "email": "tareq@wedevs.com"
@@ -14,14 +14,14 @@
   "license": "MIT",
   "main": "dist/vue-wp-list-table.common.js",
   "unpkg": "dist/vue-wp-list-table.browser.js",
-  "module": "index.js",
+  "module": "src/index.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --watch",
     "dev:build": "cross-env NODE_ENV=development webpack --config config/webpack.config.dev.js --progress --hide-modules",
     "build": "npm run build:browser && npm run build:common",
     "build:browser": "cross-env NODE_ENV=production webpack --config config/webpack.config.browser.js --progress --hide-modules",
     "build:common": "cross-env NODE_ENV=production webpack --config config/webpack.config.common.js --progress --hide-modules",
-    "prepublish": "npm run dev:build"
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",

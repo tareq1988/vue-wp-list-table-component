@@ -25,12 +25,19 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         exclude: /node_modules/,
+        options: {
+          loaders: {
+            css: ExtractTextPlugin.extract('css-loader'),
+            less: ExtractTextPlugin.extract('css-loader!less-loader'),
+          }
+        }
       },
     ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'VERSION': JSON.stringify(config.version),
-    })
+    }),
+    new ExtractTextPlugin(outputFile + '.css'),
   ],
 }
