@@ -78,22 +78,29 @@
         </tr>
       </tfoot>
       <tbody>
-        <tr v-for="row in rows">
-          <th scope="row" class="check-column" v-if="showCb">
-            <input type="checkbox" name="item[]" :value="row.id" v-model="checkedItems">
-          </th>
-          <td v-for="(value, key) in columns" :class="['column', key]">
-            <slot :name="key" :row="row">
-              {{ row[key] }}
-            </slot>
+        <template v-if="rows.length">
+          <tr v-for="row in rows" :key="row[index]">
+            <th scope="row" class="check-column" v-if="showCb">
+              <input type="checkbox" name="item[]" :value="row[index]" v-model="checkedItems">
+            </th>
+            <td v-for="(value, key) in columns" :class="['column', key]">
+              <slot :name="key" :row="row">
+                {{ row[key] }}
+              </slot>
 
-            <div v-if="actionColumn === key && hasActions" class="row-actions">
-              <span v-for="action in actions" :class="action.key">
-                <a href="#" @click.prevent="actionClicked(action.key, row)">{{ action.label }}</a>
-                <template v-if="!hideActionSeparator(action.key)"> | </template>
-              </span>
-            </div>
-          </td>
+              <div v-if="actionColumn === key && hasActions" class="row-actions">
+                <slot name="row-actions" :row="row">
+                  <span v-for="action in actions" :class="action.key">
+                    <a href="#" @click.prevent="actionClicked(action.key, row)">{{ action.label }}</a>
+                    <template v-if="!hideActionSeparator(action.key)"> | </template>
+                  </span>
+                </slot>
+              </div>
+            </td>
+          </tr>
+        </template>
+        <tr v-else>
+          <td :colspan="colspan">{{ notFound }}</td>
         </tr>
       </tbody>
     </table>
@@ -183,6 +190,10 @@ export default {
       type: String,
       default: 'wp-list-table widefat fixed striped',
     },
+    notFound: {
+      type: String,
+      default: 'No items found.',
+    },
     totalItems: {
       type: Number,
       default: 0,
@@ -264,6 +275,16 @@ export default {
       }
 
       return false;
+    },
+
+    colspan() {
+      let columns = Object.keys(this.columns).length;
+
+      if ( this.showCb ) {
+        columns += 1;
+      }
+
+      return columns;
     },
 
     selectAll: {

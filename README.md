@@ -105,6 +105,7 @@ Add the component:
 |----------------|---------|----------|---------------------------------------|-------------------------------------------------------------------------|
 | `columns`      | Object  | **yes**  | `{}`                                  |                                                                         |
 | `rows`         | Array   | **yes**  | `[]`                                  |                                                                         |
+| `notFound`     | String  | no       | `No items found.`                     | Shows if no items are found                                             |
 | `index`        | String  | no       | `id`                                  | The index identifier of the row                                         |
 | `showCb`       | Boolean | no       | `true`                                 | Wheather to show the bulk checkbox in each rows                         |
 | `loading`      | Boolean | no       | `false`                               | To show the loading effect, pass `true`                                 |
