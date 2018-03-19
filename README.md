@@ -3,7 +3,16 @@
 [![npm](https://img.shields.io/npm/v/vue-wp-list-table.svg) ![npm](https://img.shields.io/npm/dm/vue-wp-list-table.svg)](https://www.npmjs.com/package/vue-wp-list-table)
 [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 
-WordPress List Table component for Vue.js
+WordPress List Table component for Vue.js.
+
+Supports:
+
+ * Row Actions with Slot Support
+ * Bulk Actions
+ * Pagination
+ * Custom Column Slot
+ * Custom Filter Slot
+ * Sorting
 
 ## Table of contents
 
@@ -19,6 +28,26 @@ npm install --save vue-wp-list-table
 # Usage
 
 Add the component:
+
+```js
+import ListTable from 'vue-wp-list-table';
+import 'vue-wp-list-table/dist/vue-wp-list-table.css';
+
+export default {
+  name: 'Hello',
+
+  components: {
+    ListTable
+  },
+
+  data () {
+    return {
+
+    };
+  },
+}
+
+```
 
 ```html
 
@@ -245,6 +274,10 @@ methods: {
 
 }
 ```
+
+## ⛑ Extra Goodies
+
+Want to get started with WordPress Plugin development with Vue.js? Take a look at [Vue Starter Plugin](https://github.com/tareq1988/vue-wp-starter)
 
 ## License
 
