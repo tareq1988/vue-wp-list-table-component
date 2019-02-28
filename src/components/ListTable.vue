@@ -316,6 +316,18 @@ export default {
     }
   },
 
+  watch: {
+    /**
+     * Watch for `checkItems` change, so parent can have some
+     * additional logic for bulk selection.
+     *
+     * @param value
+     */
+    checkedItems(value) {
+      this.$emit('checked', value);
+    },
+  },
+
   methods: {
 
     hideActionSeparator(action) {

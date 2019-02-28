@@ -229,6 +229,23 @@ methods: {
 }
 ```
 
+**checked**: When rows are selected using checkbox
+
+```html
+<!-- template -->
+<list-table
+  @checked="itemsChecked"
+</list-table>
+
+<!-- method -->
+methods: {
+  itemsChecked(ids) {
+    console.info('these ids are selected:', ids);
+    // Output: these ids are selected: [247, 123]
+  }
+}
+```
+
 ### Loading via Ajax
 
 ```html
