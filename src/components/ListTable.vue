@@ -79,7 +79,7 @@
       </tfoot>
       <tbody>
         <template v-if="rows.length">
-          <tr v-for="row in rows" :key="row[index]">
+          <tr v-for="row in rows" :key="row[index]" :class="rowClass(row)">
             <th scope="row" class="check-column" v-if="showCb">
               <input type="checkbox" name="item[]" :value="row[index]" v-model="checkedItems">
             </th>
@@ -217,7 +217,13 @@ export default {
     sortOrder: {
       type: String,
       default: "asc",
-    }
+    },
+    rowClass: {
+      type: Function,
+      default () {
+        return row => ''
+      },
+    },
   },
 
   data () {
