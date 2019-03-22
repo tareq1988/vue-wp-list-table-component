@@ -153,12 +153,16 @@ export default {
     columns: {
       type: Object,
       required: true,
-      default: {},
+      default () {
+        return {}
+      },
     },
     rows: {
       type: Array, // String, Number, Boolean, Function, Object, Array
       required: true,
-      default: [],
+      default () {
+        return []
+      },
     },
     index: {
       type: String,
@@ -179,12 +183,16 @@ export default {
     actions: {
       type: Array,
       required: false,
-      default: [],
+      default () {
+        return []
+      },
     },
     bulkActions: {
       type: Array,
       required: false,
-      default: [],
+      default () {
+        return []
+      },
     },
     tableClass: {
       type: String,
