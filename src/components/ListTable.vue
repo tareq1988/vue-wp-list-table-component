@@ -24,7 +24,7 @@
         <slot name="filters"></slot>
       </div>
 
-      <div class="tablenav-pages" :class="{'one-page': totalPages === 1}">
+      <div class="tablenav-pages" :class="{'one-page': totalPages === 1 || totalPages === 0}">
         <span class="displaying-num">{{ itemsTotal }} items</span>
 
         <span class="pagination-links" v-if="hasPagination">
