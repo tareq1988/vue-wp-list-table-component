@@ -56,6 +56,7 @@
           <th v-for="(value, key) in columns" :class="[
             'column',
             key,
+            value.class || '',
             { 'sortable': isSortable(value) },
             { 'sorted': isSorted(key) },
             { 'asc': isSorted(key) && sortOrder === 'asc' },
@@ -74,7 +75,7 @@
       <tfoot>
         <tr>
           <td v-if="showCb" class="manage-column column-cb check-column"><input type="checkbox" v-model="selectAll"></td>
-          <th v-for="(value, key) in columns" :class="['column', key]">{{ value.label }}</th>
+          <th v-for="(value, key) in columns" :class="['column', key, value.class || '']">{{ value.label }}</th>
         </tr>
       </tfoot>
       <tbody>
@@ -83,7 +84,7 @@
             <th scope="row" class="check-column" v-if="showCb">
               <input type="checkbox" name="item[]" :value="row[index]" v-model="checkedItems">
             </th>
-            <td v-for="(value, key) in columns" :class="['column', key]">
+            <td v-for="(value, key) in columns" :class="['column', key, value.class || '']">
               <slot :name="key" :row="row">
                 {{ row[key] }}
               </slot>
