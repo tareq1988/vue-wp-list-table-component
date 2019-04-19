@@ -130,24 +130,25 @@ export default {
 ### Props
 
 
-| Property       | Type    | Required | Default                               | Description                                                             |
-|----------------|---------|----------|---------------------------------------|-------------------------------------------------------------------------|
-| `columns`      | Object  | **yes**  | `{}`                                  |                                                                         |
-| `rows`         | Array   | **yes**  | `[]`                                  |                                                                         |
-| `notFound`     | String  | no       | `No items found.`                     | Shows if no items are found                                             |
-| `index`        | String  | no       | `id`                                  | The index identifier of the row                                         |
-| `showCb`       | Boolean | no       | `true`                                 | Wheather to show the bulk checkbox in each rows                         |
-| `loading`      | Boolean | no       | `false`                               | To show the loading effect, pass `true`                                 |
-| `actionColumn` | String  | no       | ` ` (empty)                            | Define which is the action column so we could place action items there. |
-| `actions`      | Array   | no       | `[]`                                  | If you want to show row actions, pass an **Array** of **Objects**       |
-| `bulkActions`  | Array   | no       | `[]`                                  | Wheather to show the bulk actions                                       |
-| `tableClass`   | String  | no       | `wp-list-table widefat fixed striped` | The table classes                                                       |
-| `totalItems`   | Number  | no       | `0`                                   | Total count of rows in the database                                     |
-| `totalPages`   | Number  | no       | `1`                                   | How many pages are there for pagination                                 |
-| `perPage`      | Number  | no       | `20`                                  | Items to show per page                                                  |
-| `currentPage`  | Number  | no       | `1`                                   | Current page we are in                                                  |
-| `sortBy`       | String  | no       | `null`                                | The property in data on which to initially sort.                        |
-| `sortOrder`    | String  | no       | `asc`                                 | The initial sort order.                                                 |
+| Property       | Type     | Required | Default                               | Description                                                             |
+|----------------|----------|----------|---------------------------------------|-------------------------------------------------------------------------|
+| `columns`      | Object   | **yes**  | `{}`                                  |                                                                         |
+| `rows`         | Array    | **yes**  | `[]`                                  |                                                                         |
+| `notFound`     | String   | no       | `No items found.`                     | Shows if no items are found                                             |
+| `index`        | String   | no       | `id`                                  | The index identifier of the row                                         |
+| `showCb`       | Boolean  | no       | `true`                                | Wheather to show the bulk checkbox in each rows                         |
+| `loading`      | Boolean  | no       | `false`                               | To show the loading effect, pass `true`                                 |
+| `actionColumn` | String   | no       | ` ` (empty)                           | Define which is the action column so we could place action items there. |
+| `actions`      | Array    | no       | `[]`                                  | If you want to show row actions, pass an **Array** of **Objects**       |
+| `bulkActions`  | Array    | no       | `[]`                                  | Wheather to show the bulk actions                                       |
+| `tableClass`   | String   | no       | `wp-list-table widefat fixed striped` | The table classes                                                       |
+| `totalItems`   | Number   | no       | `0`                                   | Total count of rows in the database                                     |
+| `totalPages`   | Number   | no       | `1`                                   | How many pages are there for pagination                                 |
+| `perPage`      | Number   | no       | `20`                                  | Items to show per page                                                  |
+| `currentPage`  | Number   | no       | `1`                                   | Current page we are in                                                  |
+| `sortBy`       | String   | no       | `null`                                | The property in data on which to initially sort.                        |
+| `sortOrder`    | String   | no       | `asc`                                 | The initial sort order.                                                 |
+| `rowClass`     | Function | no       | `(row) => ''`                         | Function for customizing a row's class name.                            |
 
 
 ## Listeners
@@ -225,6 +226,23 @@ methods: {
     this.sortOrder = order;
 
     // this.loadItems(comun, order);
+  }
+}
+```
+
+**checked**: When rows are selected using checkbox
+
+```html
+<!-- template -->
+<list-table
+  @checked="itemsChecked"
+</list-table>
+
+<!-- method -->
+methods: {
+  itemsChecked(ids) {
+    console.info('these ids are selected:', ids);
+    // Output: these ids are selected: [247, 123]
   }
 }
 ```

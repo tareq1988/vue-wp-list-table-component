@@ -24,7 +24,7 @@
         <slot name="filters"></slot>
       </div>
 
-      <div class="tablenav-pages">
+      <div class="tablenav-pages" :class="{'one-page': totalPages === 1 || totalPages === 0}">
         <span class="displaying-num">{{ itemsTotal }} items</span>
 
         <span class="pagination-links" v-if="hasPagination">
@@ -56,6 +56,7 @@
           <th v-for="(value, key) in columns" :class="[
             'column',
             key,
+            value.class || '',
             { 'sortable': isSortable(value) },
             { 'sorted': isSorted(key) },
             { 'asc': isSorted(key) && sortOrder === 'asc' },
@@ -74,16 +75,16 @@
       <tfoot>
         <tr>
           <td v-if="showCb" class="manage-column column-cb check-column"><input type="checkbox" v-model="selectAll"></td>
-          <th v-for="(value, key) in columns" :class="['column', key]">{{ value.label }}</th>
+          <th v-for="(value, key) in columns" :class="['column', key, value.class || '']">{{ value.label }}</th>
         </tr>
       </tfoot>
       <tbody>
         <template v-if="rows.length">
-          <tr v-for="row in rows" :key="row[index]">
+          <tr v-for="row in rows" :key="row[index]" :class="rowClass(row)">
             <th scope="row" class="check-column" v-if="showCb">
               <input type="checkbox" name="item[]" :value="row[index]" v-model="checkedItems">
             </th>
-            <td v-for="(value, key) in columns" :class="['column', key]">
+            <td v-for="(value, key) in columns" :class="['column', key, value.class || '']">
               <slot :name="key" :row="row">
                 {{ row[key] }}
               </slot>
@@ -153,12 +154,16 @@ export default {
     columns: {
       type: Object,
       required: true,
-      default: {},
+      default () {
+        return {}
+      },
     },
     rows: {
       type: Array, // String, Number, Boolean, Function, Object, Array
       required: true,
-      default: [],
+      default () {
+        return []
+      },
     },
     index: {
       type: String,
@@ -179,12 +184,16 @@ export default {
     actions: {
       type: Array,
       required: false,
-      default: [],
+      default () {
+        return []
+      },
     },
     bulkActions: {
       type: Array,
       required: false,
-      default: [],
+      default () {
+        return []
+      },
     },
     tableClass: {
       type: String,
@@ -217,7 +226,13 @@ export default {
     sortOrder: {
       type: String,
       default: "asc",
-    }
+    },
+    rowClass: {
+      type: Function,
+      default () {
+        return row => ''
+      },
+    },
   },
 
   data () {
@@ -314,6 +329,18 @@ export default {
         this.checkedItems = selected;
       }
     }
+  },
+
+  watch: {
+    /**
+     * Watch for `checkItems` change, so parent can have some
+     * additional logic for bulk selection.
+     *
+     * @param value
+     */
+    checkedItems(value) {
+      this.$emit('checked', value);
+    },
   },
 
   methods: {

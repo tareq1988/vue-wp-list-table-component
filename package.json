@@ -1,7 +1,7 @@
 {
-  "name": "vue-wp-list-table",
+  "name": "@rebelcode/vue-wp-list-table",
   "description": "WordPress List Table component for Vue.js",
-  "version": "1.1.0",
+  "version": "1.1.4",
   "author": {
     "name": "Tareq Hasan",
     "email": "tareq@wedevs.com"
