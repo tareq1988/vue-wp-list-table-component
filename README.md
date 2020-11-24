@@ -7,12 +7,12 @@ WordPress List Table component for Vue.js.
 
 Supports:
 
- * Row Actions with Slot Support
- * Bulk Actions
- * Pagination
- * Custom Column Slot
- * Custom Filter Slot
- * Sorting
+- Row Actions with Slot Support
+- Bulk Actions
+- Pagination
+- Custom Column Slot
+- Custom Filter Slot
+- Sorting
 
 ## Table of contents
 
@@ -30,27 +30,23 @@ npm install --save vue-wp-list-table
 Add the component:
 
 ```js
-import ListTable from 'vue-wp-list-table';
-import 'vue-wp-list-table/dist/vue-wp-list-table.css';
+import ListTable from "vue-wp-list-table";
+import "vue-wp-list-table/dist/vue-wp-list-table.css";
 
 export default {
-  name: 'Hello',
+  name: "Hello",
 
   components: {
-    ListTable
+    ListTable,
   },
 
-  data () {
-    return {
-
-    };
+  data() {
+    return {};
   },
-}
-
+};
 ```
 
 ```html
-
 <list-table
   :columns="{
     'title': {
@@ -109,7 +105,7 @@ export default {
   @bulk:click="onBulkAction"
 >
   <template slot="title" slot-scope="data">
-    <img :src="data.row.image" :alt="data.row.title" width="50">
+    <img :src="data.row.image" :alt="data.row.title" width="50" />
     <strong><a href="#">{{ data.row.title }}</a></strong>
   </template>
 
@@ -129,16 +125,15 @@ export default {
 
 ### Props
 
-
 | Property       | Type    | Required | Default                               | Description                                                             |
-|----------------|---------|----------|---------------------------------------|-------------------------------------------------------------------------|
+| -------------- | ------- | -------- | ------------------------------------- | ----------------------------------------------------------------------- |
 | `columns`      | Object  | **yes**  | `{}`                                  |                                                                         |
 | `rows`         | Array   | **yes**  | `[]`                                  |                                                                         |
 | `notFound`     | String  | no       | `No items found.`                     | Shows if no items are found                                             |
 | `index`        | String  | no       | `id`                                  | The index identifier of the row                                         |
-| `showCb`       | Boolean | no       | `true`                                 | Wheather to show the bulk checkbox in each rows                         |
+| `showCb`       | Boolean | no       | `true`                                | Wheather to show the bulk checkbox in each rows                         |
 | `loading`      | Boolean | no       | `false`                               | To show the loading effect, pass `true`                                 |
-| `actionColumn` | String  | no       | ` ` (empty)                            | Define which is the action column so we could place action items there. |
+| `actionColumn` | String  | no       | ` ` (empty)                           | Define which is the action column so we could place action items there. |
 | `actions`      | Array   | no       | `[]`                                  | If you want to show row actions, pass an **Array** of **Objects**       |
 | `bulkActions`  | Array   | no       | `[]`                                  | Wheather to show the bulk actions                                       |
 | `tableClass`   | String  | no       | `wp-list-table widefat fixed striped` | The table classes                                                       |
@@ -148,7 +143,7 @@ export default {
 | `currentPage`  | Number  | no       | `1`                                   | Current page we are in                                                  |
 | `sortBy`       | String  | no       | `null`                                | The property in data on which to initially sort.                        |
 | `sortOrder`    | String  | no       | `asc`                                 | The initial sort order.                                                 |
-
+| `text`         | Object  | no       | `{loading: "Loading", select_bulk_action: "Select bulk action", bulk_actions: "Bulk Actions", items: "items", apply: "Apply"}`                                  | All static text                                                         |
 
 ## Listeners
 
