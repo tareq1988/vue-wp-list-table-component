@@ -148,7 +148,7 @@ export default {
 | `currentPage`  | Number  | no       | `1`                                   | Current page we are in                                                  |
 | `sortBy`       | String  | no       | `null`                                | The property in data on which to initially sort.                        |
 | `sortOrder`    | String  | no       | `asc`                                 | The initial sort order.                                                 |
-
+| `text`    | Object  | no       | `{loading: 'Loading', select_bulk_action: 'Select bulk action', bulk_actions: 'Bulk Actions', items: 'items', apply: 'Apply'}`                                 | All static text                                                 |
 
 ## Listeners
 
