@@ -3,21 +3,21 @@
 
     <div class="table-loader-wrap" v-if="loading">
       <div class="table-loader-center">
-        <div class="table-loader">Loading</div>
+        <div class="table-loader">{{ text.loading }}</div>
       </div>
     </div>
 
     <div class="tablenav top">
 
       <div class="alignleft actions bulkactions" v-if="hasBulkActions">
-        <label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label>
+        <label for="bulk-action-selector-top" class="screen-reader-text">{{ text.select_bulk_action }}</label>
 
         <select name="action" id="bulk-action-selector-top" v-model="bulkLocal">
-          <option value="-1">Bulk Actions</option>
+          <option value="-1">{{ text.bulk_actions }}</option>
           <option v-for="action in bulkActions" :value="action.key">{{ action.label }}</option>
         </select>
 
-        <button class="button action" @click.prevent="handleBulkAction" :disabled="!checkedItems.length">Apply</button>
+        <button class="button action" @click.prevent="handleBulkAction" :disabled="!checkedItems.length">{{ text.apply }}</button>
       </div>
 
       <div class="alignleft actions">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="tablenav-pages">
-        <span class="displaying-num">{{ itemsTotal }} items</span>
+        <span class="displaying-num">{{ itemsTotal }} {{ text.items }}</span>
 
         <span class="pagination-links" v-if="hasPagination">
           <span v-if="disableFirst" class="tablenav-pages-navspan button disabled" aria-hidden="true">&laquo;</span>
@@ -106,10 +106,10 @@
     </table>
     <div class="tablenav bottom">
       <div class="alignleft actions bulkactions" v-if="hasBulkActions">
-        <label for="bulk-action-selector-top" class="screen-reader-text">Select bulk action</label>
+        <label for="bulk-action-selector-top" class="screen-reader-text">{{ text.select_bulk_action }}</label>
 
         <select name="action" id="bulk-action-selector-top" v-model="bulkLocal">
-          <option value="-1">Bulk Actions</option>
+          <option value="-1">{{ text.bulk_actions }}</option>
           <option v-for="action in bulkActions" :value="action.key">{{ action.label }}</option>
         </select>
 
@@ -117,7 +117,7 @@
       </div>
 
       <div class="tablenav-pages">
-        <span class="displaying-num">{{ itemsTotal }} items</span>
+        <span class="displaying-num">{{ itemsTotal }} {{ text.items }}</span>
 
         <span class="pagination-links" v-if="hasPagination">
           <span v-if="disableFirst" class="tablenav-pages-navspan button disabled" aria-hidden="true">&laquo;</span>
@@ -217,6 +217,18 @@ export default {
     sortOrder: {
       type: String,
       default: "asc",
+    },
+    text: {
+      type: Object,
+      default: () => {
+        return {
+          loading: 'Loading',
+          select_bulk_action: 'Select bulk action',
+          bulk_actions: 'Bulk Actions',
+          items: 'items',
+          apply: 'Apply',
+        }
+      }
     }
   },
 
