@@ -113,7 +113,7 @@
           <option v-for="action in bulkActions" :value="action.key">{{ action.label }}</option>
         </select>
 
-        <button class="button action" @click.prevent="handleBulkAction" :disabled="!checkedItems.length">Apply</button>
+        <button class="button action" @click.prevent="handleBulkAction" :disabled="!checkedItems.length">{{ text.apply }}</button>
       </div>
 
       <div class="tablenav-pages">
